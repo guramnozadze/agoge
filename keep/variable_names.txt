@@ -1,0 +1,15 @@
+# Base bill
+baseBill
+discountPercentage
+discountAmount
+finalBill
+
+# Account Balance
+totalCost
+accountBalance
+remainingBalance
+
+# URL names
+rawURL
+parsedURL
+fullPath
