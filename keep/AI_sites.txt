@@ -2,3 +2,6 @@
 ## Quick Short Maker
 
 crayou.ai is a powerful and intuitive tool that enables users to create stunning short videos with ease. Whether you're a content creator, marketer, or simply looking to express your creativity, crayou.ai provides a seamless experience for crafting engaging and visually appealing shorts.
+
+# geeksforgeeks.org/sorting-algorithms
+## most algorithms to learn
