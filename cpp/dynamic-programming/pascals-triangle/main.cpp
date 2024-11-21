@@ -6,31 +6,74 @@ class Solution {
   public:
     int countUnguarded(int m, int n, vector<vector<int>> &guards, vector<vector<int>> &walls) {
 
-        int grid[m][n];
+        string grid[m][n];
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                grid[i][j] = 0;
+                grid[i][j] = "GREEN";
             };
         }
 
         for (int i = 0; i < (int)walls.size(); i++) {
             vector<int> wall = walls[i];
-            grid[wall[0]][wall[1]] = 1;
+            grid[wall[0]][wall[1]] = "WALL";
         }
         for (int i = 0; i < (int)guards.size(); i++) {
             vector<int> guard = guards[i];
-            grid[guard[0]][guard[1]] = 1;
+            grid[guard[0]][guard[1]] = "GUARD";
+        }
+        for (int i = 0; i < (int)guards.size(); i++) {
+            vector<int> guard = guards[i];
+            int y = guard[0];
+            int x = guard[1];
+            if (grid[y][x] == "GUARD") {
+                // move down
+                for (int r = y + 1; r < m; r++) {
+                    if (grid[r][x] != "WALL" && grid[r][x] != "GUARD") {
+                        grid[r][x] = "GUARDED";
+                    } else {
+                        break;
+                    }
+                }
+                // move up
+                for (int r = y - 1; r >= 0; r--) {
+                    cout << "X: " << x << " Y: " << y << endl;
+                    if (grid[r][x] != "WALL" && grid[r][x] != "GUARD") {
+                        grid[r][x] = "GUARDED";
+                    } else {
+                        break;
+                    }
+                }
+                // move right
+                for (int r = x + 1; r < n; r++) {
+                    if (grid[y][r] != "WALL" && grid[y][r] != "GUARD") {
+                        grid[y][r] = "GUARDED";
+                    } else {
+                        break;
+                    }
+                } // move left
+                for (int r = x - 1; r >= 0; r--) {
+                    if (grid[y][r] != "WALL" && grid[y][r] != "GUARD") {
+                        grid[y][r] = "GUARDED";
+                    } else {
+                        break;
+                    }
+                }
+            }
         }
 
+        int count_green = 0;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
+                if (grid[i][j] == "GREEN") {
+                    count_green++;
+                }
+
                 cout << grid[i][j] << " ";
             };
             cout << endl;
         }
 
-        cout << "Solution" << endl;
-        return 0;
+        return count_green;
     }
 };
 
