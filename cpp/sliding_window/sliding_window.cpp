@@ -3,6 +3,32 @@
 #include <vector>
 using namespace std;
 
+// 1072. Flip Columns For Maximum Number of Equal Rows
+int maxEqualRowsAfterFlips(vector<vector<int>> &matrix) {
+
+    int numCols = matrix[0].size();
+    int maxIdenticalRows = 0;
+
+    for (vector<int> &currentRow : matrix) {
+        vector<int> flippedRow(numCols);
+        int identicalRowCount = 0;
+
+        for (int col = 0; col < numCols; col++) {
+            flippedRow[col] = 1 - currentRow[col];
+        }
+
+        for (vector<int> compareRow : matrix) {
+            if (compareRow == currentRow || compareRow == flippedRow) {
+                identicalRowCount++;
+            }
+        }
+
+        maxIdenticalRows = max(maxIdenticalRows, identicalRowCount);
+    }
+
+    return 0;
+}
+
 int classic_sliding_window(vector<int> &nums, int k) {
 
     int left = 0, curr = 0, answer = 0;
@@ -94,9 +120,8 @@ int fixed_length_sliding_window(vector<int> nums, int k) {
 int main(int argc, char *argv[]) {
 
     vector<int> nums = {4, 3, 1, 23, 5, 6, 756, 2, 3, 4, 21, 3, 4, 5, 6};
-    int ad = nums[111];
-    int a = nums.at(111);
-    int k = 80;
+    vector<vector<int>> matrix = {{0, 1}, {1, 1}};
+    maxEqualRowsAfterFlips(matrix);
 
     return 0;
 }
