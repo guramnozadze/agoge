@@ -18,12 +18,13 @@ class Solution {
                 grid[i][j] = UNGUARDED;
             };
         }
+        // vector<vector<int>> grid(m, vector<int>(n, UNGUARDED));
 
         for (int i = 0; i < (int)walls.size(); i++) {
             vector<int> wall = walls[i];
             grid[wall[0]][wall[1]] = WALL;
         }
-        for (const auto &guard : guards) {
+        for (const vector<int> &guard : guards) {
             grid[guard[0]][guard[1]] = GUARD;
         }
         for (int i = 0; i < (int)guards.size(); i++) {
