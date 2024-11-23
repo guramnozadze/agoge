@@ -33,5 +33,26 @@ int main(int argc, char *argv[]) {
         }
         cout << endl;
     }
+    int len = 8;
+
+    for (int i = 0; i < len; i++) {
+        for (int j = 0; j < len; j++) {
+            cin >> grid[i][j];
+        }
+    }
+
+    int sum = 0;
+    for (int row = 0; row < len; row++) {
+        for (int column = 0; column < len; column++) {
+            if (row % 2 == 1 && column % 2 == 0) {
+                sum += grid[row][column];
+            }
+            // cout << grid[row][column] << " ";
+        }
+        // cout << endl;
+    }
+    cout << sum;
+
+    return 0;
     return 0;
 }
