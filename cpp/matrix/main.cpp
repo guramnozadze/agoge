@@ -84,9 +84,10 @@ int sympathetic_matrix() {
         string output = "YES";
         int left = 0, top = 0;
         while (left + 2 <= n || top + 2 <= m) {
-            if (g[top][left] == g[top][left + 1] == g[top + 1][left] == g[top + 1][left + 1]) {
-                output = "NO";
-            }
+            // if (g[top][left] == g[top][left + 1] == g[top + 1][left] == g[top +
+            // 1][left + 1]) {
+            //     output = "NO";
+            // }
 
             if (top + 2 <= n) {
                 top++;
@@ -102,7 +103,33 @@ int sympathetic_matrix() {
     return 0;
 }
 
+// https://www.aiasoft.ge/problem/862
+int half_matrix() {
+    int n = 5, v = 2;
+    // cin >> n >> v;
+
+    int g[n][n];
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (i > j) {
+                g[i][j] = 0;
+            } else {
+
+                g[i][j] = v;
+            }
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << g[i][j] << " ";
+        }
+        cout << endl;
+    }
+    return 0;
+}
+
 int main() {
     // spiral_matrix();
+    half_matrix();
     return 0;
 }
