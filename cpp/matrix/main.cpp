@@ -67,37 +67,36 @@ int spiral_matrix() {
 
 // https://www.aiasoft.ge/problem/581
 int sympathetic_matrix() {
-    int test;
-    cin >> test;
+    int x;
+    cin >> x;
 
-    while (test > 0) {
+    while (x--) {
         int n, m;
         cin >> n >> m;
+        char mat[101][101];
 
-        int g[n][m];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                cin >> g[i][j];
+                cin >> mat[i][j];
             }
         }
-
-        string output = "YES";
-        int left = 0, top = 0;
-        while (left + 2 <= n || top + 2 <= m) {
-            // if (g[top][left] == g[top][left + 1] == g[top + 1][left] == g[top +
-            // 1][left + 1]) {
-            //     output = "NO";
-            // }
-
-            if (top + 2 <= n) {
-                top++;
-            } else if (left + 2 <= m) {
-                left++;
+        int isSympathetic = 1;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < m - 1; j++) {
+                if (mat[i][j] == mat[i][j + 1] && mat[i][j] == mat[i + 1][j] && mat[i][j] == mat[i + 1][j + 1]) {
+                    isSympathetic = 0;
+                    break;
+                }
+            }
+            if (!isSympathetic) {
+                break;
             }
         }
-        cout << output << endl;
-
-        test--;
+        if (isSympathetic) {
+            cout << "YES" << "\n";
+        } else {
+            cout << "NO" << "\n";
+        }
     }
 
     return 0;

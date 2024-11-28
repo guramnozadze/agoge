@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+
 // x = N = row
 // y = M = column
 int main(int argc, char *argv[]) {
