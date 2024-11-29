@@ -3,11 +3,11 @@
 using namespace std;
 
 // Bottom-up Approach
-int fibBUA(int n) {
+int fibFaster(int n) {
   vector<int> memo(n + 1, 0);
 
   for (int i = 0; i <= n; i++) {
-    if (i < 2) {
+    if (i <= 1) {
       memo[i] = 1;
     } else {
       memo[i] = memo[i - 1] + memo[i - 2];
@@ -26,16 +26,46 @@ int fib(int n, vector<int> &memo) {
   if (n <= 2) {
     return 1;
   }
+
   memo[n] = fib(n - 1, memo) + fib(n - 2, memo);
 
   return memo[n];
 }
 
+// Memoized Fibonacci
+int fibSlowMemo(int n, vector<int> &memo) {
+  if (memo[n] != 0) {
+    return memo[n];
+  }
+
+  if (n <= 1) {
+    return 1;
+  }
+
+
+  memo[n] = fibSlowMemo(n-1, memo) + fibSlowMemo(n-2, memo);
+
+  return memo[n];
+}
+
+// Slowest Fibonacci
+int fibSlow(int n) {
+  if (n <= 1) {
+    return 1;
+  }
+
+  return fibSlow(n-1) + fibSlow(n-2);
+}
+
 int main() {
 
-  int fibo = 5;
+  int n = 1;
+  vector<int> memo(n+1, 0);
 
-  cout << "answer" << fibBUA(fibo) << endl;
+  cout << "fibFaster: " << fibFaster(n) << endl;
+  cout << "fibSlowMemo: " << fibSlowMemo(n,memo) << endl;
+  cout << "fibSlow: " << fibSlow(n) << endl;
+
   return 0;
 }
 
