@@ -1,8 +1,33 @@
 #include <iostream>
+using namespace std;
+
+int recursiveSummation(const int inputNumber) {
+    if (inputNumber == 0) {
+        return 0;
+    }
+    return inputNumber + recursiveSummation(inputNumber-1);
+}
+
+string findBinary(int decimal, string  result){
+
+    if (decimal ==0){
+        return result;
+    }
+
+    result = decimal % 2 ? result + '0' : result + '1';
+    return findBinary(decimal/2, result);
+}
 
 // TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 int main() {
+    int result = recursiveSummation(5);
+    cout <<  result << endl;
+    return 0;
+    string bsinary = findBinary(12, "");
+  cout << bsinary;
+  return 0;
+
     // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the
     // <b>lang</b> variable name to see how CLion can help you rename it.
     auto lang = "C++";
