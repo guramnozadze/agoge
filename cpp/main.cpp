@@ -1,23 +1,6 @@
 #include <iostream>
 using namespace std;
 
-int recursiveSummation(const int inputNumber) {
-    if (inputNumber == 0) {
-        return 0;
-    }
-    return inputNumber + recursiveSummation(inputNumber-1);
-}
-
-string findBinary(int decimal, string  result){
-
-    if (decimal ==0){
-        return result;
-    }
-
-    result = decimal % 2 ? result + '0' : result + '1';
-    return findBinary(decimal/2, result);
-}
-
 // TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 int main() {
