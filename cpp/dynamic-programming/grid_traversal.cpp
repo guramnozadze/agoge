@@ -46,6 +46,31 @@ vector<int>* how_sum(int targetSum, vector<int> &a) {
 	return nullptr;
 }
 
+vector<int>* bestSum(int targetSum, vector<int> &a) {
+	if (targetSum == 0) return new vector<int>();
+	if (targetSum < 0 ) return nullptr;
+
+	vector<int>* shortestCombination = nullptr;
+
+	for (int num : a) {
+		int remainder = targetSum - num;
+		vector<int>* remainderCombination = how_sum(remainder, a);
+		if (remainderCombination != nullptr) {
+			vector<int>* combination(remainderCombination);
+			combination->push_back(num);
+
+			// if the combination is shorter thn the current *shortest*, update it;
+			if (shortestCombination == nullptr || combination->size() < shortestCombination->size()) {
+				shortestCombination = combination;
+			}
+
+		}
+	}
+
+	return shortestCombination;
+}
+
+
 
 int main() {
 	int m = 33, n = 35;
@@ -54,9 +79,9 @@ int main() {
 	// vector<int> memo(targetSum+1, -1);
 	// cout << how_sum(targetSum,a) << endl;
 	int targetSum = 11;
-	vector<int> a = {5,3,4,7};
+	vector<int> a = {5,3,4,7,11};
 
-	vector<int>* sums = how_sum(targetSum, a);
+	vector<int>* sums = bestSum(targetSum, a);
 	if (sums != nullptr) {
 		for (int n : *sums) {  // Note the * to dereference
 			cout << n << endl;
