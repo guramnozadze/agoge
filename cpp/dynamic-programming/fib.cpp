@@ -57,9 +57,21 @@ int fibSlow(int n) {
   return fibSlow(n-1) + fibSlow(n-2);
 }
 
+int fibMemo(int n, vector<int> &memo) {
+  if(memo[n] != 0){
+    return memo[n];
+  }
+  if (n <= 2) {
+    return 1;
+  }
+
+  memo[n] = fibSlow(n-1) + fibSlow(n-2);
+  return memo[n];
+}
+
 int main() {
 
-  int n = 1;
+  int n = 41;
   vector<int> memo(n+1, 0);
 
   cout << "fibFaster: " << fibFaster(n) << endl;
