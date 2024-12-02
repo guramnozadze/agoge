@@ -17,21 +17,6 @@ int fibFaster(int n) {
   return memo[n];
 }
 
-// Memoized Fib
-int fib(int n, vector<int> &memo) {
-  if (memo[n] != 0) {
-    return memo[n];
-  }
-
-  if (n <= 2) {
-    return 1;
-  }
-
-  memo[n] = fib(n - 1, memo) + fib(n - 2, memo);
-
-  return memo[n];
-}
-
 // Memoized Fibonacci
 int fibSlowMemo(int n, vector<int> &memo) {
   if (memo[n] != 0) {
@@ -57,53 +42,32 @@ int fibSlow(int n) {
   return fibSlow(n-1) + fibSlow(n-2);
 }
 
-int fibMemo(int n, vector<int> &memo) {
-  if(memo[n] != 0){
-    return memo[n];
+// Tabluation
+// 0 1 2 3 4 5 6
+// 0 1 1 2 3
+int fib_dynamic(int n) {
+  vector<int> table(n+1, 0);
+  table[1]= 1;
+  for (int i = 0 ; i <= n; i++) {
+    table[i+1] += table[i];
+    table[i+2] += table[i];
+
   }
-  if (n <= 2) {
-    return 1;
+  for (int i = 0 ; i <= n; i++) {
+   cout << table[n] << " ";
   }
 
-  memo[n] = fibSlow(n-1) + fibSlow(n-2);
-  return memo[n];
+  return 1;
 }
 
 int main() {
 
   int n = 41;
   vector<int> memo(n+1, 0);
-
-  cout << "fibFaster: " << fibFaster(n) << endl;
-  cout << "fibSlowMemo: " << fibSlowMemo(n,memo) << endl;
-  cout << "fibSlow: " << fibSlow(n) << endl;
+  fib_dynamic(6);
+  // cout << "fibFaster: " << fibFaster(n) << endl;
+  // cout << "fibSlowMemo: " << fibSlowMemo(n,memo) << endl;
+  // cout << "fibSlow: " << fibSlow(n) << endl;
 
   return 0;
 }
-
-// OOP
-class Solution {
-public:
-  int fib(int n) {
-    vector<int> memo(n, 0);
-
-    return fibMemo(n, memo);
-  }
-
-private:
-  int fibMemo(int n, vector<int> &memo) {
-    // Check if we've already computed this Fibonacci number
-    if (memo[n] != 0) {
-      return memo[n];
-    }
-
-    // Base cases
-    if (n <= 1) {
-      return n;
-    }
-
-    // Recursive computation and memoization
-    memo[n] = fibMemo(n - 1, memo) + fibMemo(n - 2, memo);
-    return memo[n];
-  }
-};
