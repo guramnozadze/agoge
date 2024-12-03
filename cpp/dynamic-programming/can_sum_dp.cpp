@@ -14,9 +14,9 @@ bool canSumTabulation(int targetSum, int a[], int n){ // n -length
 
   for (int i = 0; i <= targetSum;i++){
     if(tab[i]){
-      for (int j = 0; j < n;j++){
-        if(tab[i+a[j]] == false){
-          tab[i+a[j]] = true;
+      for (int num : a){
+        if(tab[i+num] == false){
+          tab[i+num] = true;
         }
       }
     }
