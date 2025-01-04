@@ -5,6 +5,32 @@
 
 using namespace std;
 
+// https://www.aiasoft.ge/problem/770
+void maximum_sum() {
+    int n;
+
+    cin >> n;
+
+    int a[n];
+    int d[n];
+
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+        d[i] = 0;
+    };
+    d[0] = a[0];
+
+    int maxnum = 0;
+    for (int i = 1; i < n; i++) {
+        d[i] = max(d[i], d[i] + d[i-1]) + a[i];
+        if (d[i] > maxnum) {
+            maxnum = d[i];
+        }
+    };
+
+    cout << maxnum;
+}
+
 // https://www.aiasoft.ge/problem/458
 void pascal_trinalge() {
     int n;
@@ -234,8 +260,8 @@ int broken_ladder_1() {
 }
 
 int main() {
-    pascal_trinalge();
-    cout << "endl" << endl;
+    maximum_sum();
+    cout << endl;
 
     return 0;
 }
