@@ -5,6 +5,47 @@
 
 using namespace std;
 
+
+// https://www.aiasoft.ge/problem/204
+void locust_grasi() {
+    int n;
+
+    cin >> n;
+
+    long long a[n + 1], d[n + 1];
+
+    for (int i = 1; i <= n; i++) cin >> a[i];
+
+
+    d[1] = a[1];
+    d[2] = a[2];
+
+    for (int i = 3; i <= n; i++) d[i] = min(d[i - 1], d[i - 2]) + a[i];
+
+    cout << d[n];
+}
+
+
+// https://www.aiasoft.ge/problem/202
+void strange_ladder() {
+    int n;
+
+    cin >> n;
+
+    long long a[n + 1], d[n + 1];
+
+    for (int i = 1; i <= n; i++) cin >> a[i];
+
+
+    d[1] = a[1];
+    d[2] = a[2];
+
+    for (int i = 3; i <= n; i++) d[i] = min(d[i - 1], d[i - 2]) + a[i];
+
+    cout << d[n];
+}
+
+
 int locust_and_frogs() {
     int N, K, L; // leafs, jump distance, count of frogs
     cin >> N >> K >> L;
@@ -29,17 +70,17 @@ int locust_and_frogs() {
         }
     }
 
-    return (path[N - 1] == -1 ? 0 : path[N - 1]) ;
+    return (path[N - 1] == -1 ? 0 : path[N - 1]);
 }
 
 int broken_ladder_1() {
     int N, K;
 
     cin >> N >> K;
-    vector<long long> F(N+1, 0);
-    vector<bool> check(N+1, true);
-    F[0]=1;
-    F[1]=1;
+    vector<long long> F(N + 1, 0);
+    vector<bool> check(N + 1, true);
+    F[0] = 1;
+    F[1] = 1;
 
 
     for (int i = 0; i < K; i++) {
@@ -50,24 +91,21 @@ int broken_ladder_1() {
     }
 
 
-
     for (int i = 2; i <= N; i++) {
-        if(check[i] == false){
+        if (check[i] == false) {
             continue;
         }
 
 
-        F[i]=F[i-1]+F[i-2];
+        F[i] = F[i - 1] + F[i - 2];
     }
 
 
-    cout<< F[N];
+    cout << F[N];
     return 0;
 
-int main() {
-    int result =broken_ladder_1() ;
-    cout << result;
-    return 0;
-}
-
-
+    int main() {
+        int result = broken_ladder_1();
+        cout << result;
+        return 0;
+    }
