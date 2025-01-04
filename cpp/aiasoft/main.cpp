@@ -5,23 +5,54 @@
 
 using namespace std;
 
+// https://www.aiasoft.ge/problem/225
+void xaliso_isle() {
+    int n, m;
+    cin >> n >> m;
+    vector a(n + 2, vector(m + 2, 0));
+    vector dp(n + 2, vector(m + 2, 0));
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
+            cin >> a[i][j];
+        }
+    }
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
+            dp[i][j] = a[i][j] + max(max(dp[i-1][j], dp[i-1][j-1]), dp[i-1][j+1]);
+        }
+    }
+
+
+    // READ
+    // for (int i = 0; i < n + 2; i++) {
+    //     for (int j = 0; j < m + 2; j++) {
+    //         cout << a[i][j] << " ";
+    //     }
+    //     cout << endl;
+    // }
+    // cout << endl << endl;
+    // READ
+    int res = 0;
+    for (int j = 1; j < m + 1; j++) {
+        res = max(res, dp[n][j]);
+    }
+    cout << res;
+}
 
 // https://www.aiasoft.ge/problem/204
 void locust_grasi() {
     int n;
-
     cin >> n;
-
-    long long a[n + 1], d[n + 1];
-
-    for (int i = 1; i <= n; i++) cin >> a[i];
-
-
-    d[1] = a[1];
-    d[2] = a[2];
-
-    for (int i = 3; i <= n; i++) d[i] = min(d[i - 1], d[i - 2]) + a[i];
-
+    int d[n + 1];
+    d[1] = 0;
+    for (int i = 2; i <= n; i++) {
+        d[i] = d[i - 1];
+        if (i % 2 == 0) d[i] = min(d[i], d[i / 2]);
+        if (i % 3 == 0) d[i] = min(d[i], d[i / 3]);
+        d[i]++;
+    }
     cout << d[n];
 }
 
@@ -103,9 +134,11 @@ int broken_ladder_1() {
 
     cout << F[N];
     return 0;
+}
 
-    int main() {
-        int result = broken_ladder_1();
-        cout << result;
-        return 0;
-    }
+int main() {
+    xaliso_isle();
+    cout << "endl" << endl;
+
+    return 0;
+}

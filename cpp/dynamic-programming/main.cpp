@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
     for (int i = 1; i <= n; i++) {
         cout << i << " - " << d[i] << endl;
     }
-    cout << d[n];
+    cout << d[n] ;
 
     return 0;
 }
