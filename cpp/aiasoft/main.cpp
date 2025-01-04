@@ -4,6 +4,22 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+// https://www.aiasoft.ge/problem/299
+void ladder_and_ball() {
+    int n;
+
+    cin >> n;
+
+    int d[n + 1];
+
+    d[1] = 1;
+    d[2] = 2;
+    d[3] = 4;
+
+    for (int i = 4; i <= n; i++) d[i] = d[i - 1] + d[i - 2] + d[i - 3];
+
+    cout << d[n];
+}
 
 // https://www.aiasoft.ge/problem/225
 void xaliso_isle() {
@@ -20,7 +36,7 @@ void xaliso_isle() {
 
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= m; j++) {
-            dp[i][j] = a[i][j] + max(max(dp[i-1][j], dp[i-1][j-1]), dp[i-1][j+1]);
+            dp[i][j] = a[i][j] + max(max(dp[i - 1][j], dp[i - 1][j - 1]), dp[i - 1][j + 1]);
         }
     }
 
@@ -137,7 +153,7 @@ int broken_ladder_1() {
 }
 
 int main() {
-    xaliso_isle();
+    ladder_and_ball();
     cout << "endl" << endl;
 
     return 0;
