@@ -5,6 +5,64 @@
 
 using namespace std;
 
+// https://www.aiasoft.ge/problem/458
+void pascal_trinalge() {
+    int n;
+
+    cin >> n;
+    vector P(n+1, vector(n+1,0));
+    P[1][1] = 1;
+    for (int i = 2; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            P[i][j] = P[i-1][j] + P[i-1][j-1];
+        };
+    };
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            cout << P[i][j] << " ";
+        };
+        cout << endl;
+    };
+}
+
+// https://www.aiasoft.ge/problem/430
+void smart_mouse() {
+    int n;
+
+    cin >> n;
+
+    int d[n + 1];
+    d[1] = 1;
+    d[3] = 2;
+    d[5] = 6;
+
+    for (int i = 3; i <= n; i++) {
+        d[i] = d[i-1] + d[i-2];
+
+    };
+
+    cout << d[n];
+}
+
+
+// https://www.aiasoft.ge/problem/313
+void zero_and_one() {
+    int n;
+
+    cin >> n;
+
+    int d[n + 1];
+    d[1] = 2;
+    d[2] = 3;
+
+    for (int i = 3; i <= n; i++) {
+        d[i] = d[i-1] + d[i-2];
+
+    };
+
+    cout << d[n];
+}
 
 // https://www.aiasoft.ge/problem/300
 void costly_step_ladder() {
@@ -176,7 +234,7 @@ int broken_ladder_1() {
 }
 
 int main() {
-    ladder_and_ball();
+    pascal_trinalge();
     cout << "endl" << endl;
 
     return 0;
