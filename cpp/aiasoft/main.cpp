@@ -22,7 +22,7 @@ void maximum_sum() {
 
     int maxnum = 0;
     for (int i = 1; i < n; i++) {
-        d[i] = max(d[i], d[i] + d[i-1]) + a[i];
+        d[i] = max(d[i], d[i] + d[i - 1]) + a[i];
         if (d[i] > maxnum) {
             maxnum = d[i];
         }
@@ -36,11 +36,11 @@ void pascal_trinalge() {
     int n;
 
     cin >> n;
-    vector P(n+1, vector(n+1,0));
+    vector P(n + 1, vector(n + 1, 0));
     P[1][1] = 1;
     for (int i = 2; i <= n; i++) {
         for (int j = 1; j <= i; j++) {
-            P[i][j] = P[i-1][j] + P[i-1][j-1];
+            P[i][j] = P[i - 1][j] + P[i - 1][j - 1];
         };
     };
 
@@ -64,8 +64,7 @@ void smart_mouse() {
     d[5] = 6;
 
     for (int i = 3; i <= n; i++) {
-        d[i] = d[i-1] + d[i-2];
-
+        d[i] = d[i - 1] + d[i - 2];
     };
 
     cout << d[n];
@@ -83,8 +82,7 @@ void zero_and_one() {
     d[2] = 3;
 
     for (int i = 3; i <= n; i++) {
-        d[i] = d[i-1] + d[i-2];
-
+        d[i] = d[i - 1] + d[i - 2];
     };
 
     cout << d[n];
@@ -260,8 +258,8 @@ int broken_ladder_1() {
 }
 
 int main() {
-    maximum_sum();
-    cout << endl;
+
+        cout << "nigga" << endl;
 
     return 0;
 }
