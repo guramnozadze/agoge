@@ -6,6 +6,12 @@
 
 using namespace std;
 
+// https://www.aiasoft.ge/problem/904
+void power_of_vertice() {
+    int N, M, V; // Vertice, Edge, vertice number
+}
+
+// https://www.aiasoft.ge/problem/903
 void city_baias_mayor() {
     int N, M;// Verticies, Edges
     cin >> N >> M;
@@ -75,7 +81,6 @@ void edge_count_answer() {
 
 int main() {
     city_baias_mayor();
-
 
     return 0;
 }
