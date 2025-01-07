@@ -6,6 +6,34 @@
 
 using namespace std;
 
+void city_baias_mayor() {
+    int N, M;// Verticies, Edges
+    cin >> N >> M;
+    vector<int> adj[N+1];
+
+    for (int i = 1; i <= M; i++) {
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+
+    int max_edges =0;
+    int vertice =0;
+    for (int i = 1; i <= N; i++) {
+        cout << i << " - ";
+        if (adj[i].size() >= max_edges) {
+            vertice = i;
+            max_edges =adj[i].size();
+        }
+        for (int j = 0; j < adj[i].size(); j++) {
+            cout << adj[i][j]<<" ";
+        }
+        cout << endl;
+    }
+    cout << vertice;
+
+}
 
 void edge_count() {
     int N; // N - Vertex - წიბო
@@ -46,7 +74,7 @@ void edge_count_answer() {
 }
 
 int main() {
-    edge_count();
+    city_baias_mayor();
 
 
     return 0;
