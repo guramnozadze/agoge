@@ -6,55 +6,48 @@
 
 using namespace std;
 
-void addEdge(vector<int> adj[], int u, int v) {
-    adj[u].push_back(v);
-    adj[v].push_back(u);
-}
 
-void adjency_matrix() {
-    int N, M; // N - Vertex - წვერი ||||| M - Edge - წიბო
-    cin >> N >> M;
+void edge_count() {
+    int N; // N - Vertex - წიბო
+    cin >> N;
 
-    int adj[N + 1][N+1] = {0};
-
-
-    for (int i = 1; i <= M; i++) {
-        int v, u;
-        cin >> v >> u;
-        adj[u][v] = 1;
-        adj[v][u] = 1;
-    }
-
+    int adj[N+1][N+1] = { 0 };
+    string answer = "yes";
+    int edge_count = 0;
     for (int i = 1; i <= N; i++) {
         for (int j = 1; j <= N; j++) {
-            cout << adj[i][j] << " ";
+            int a;
+            cin >> a;
+            adj[i][j] = a;
+            if (adj[j][i] == 1 && adj[i][j] == 1) {
+                edge_count++;
+            }
         }
-        cout << endl;
     }
-    // Input
-    // 3 2
-    // 1 2
-    // 1 3
+
+    cout << edge_count << endl;
+}
+
+void edge_count_answer() {
+    int N;
+    int x, m = 0, k = 0;
+
+    cin >> N;
+
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            cin >> x;
+            if(i==j) m += x; // Diagonal (LOOP)
+            else k += x; // Off-diagonal
+        }
+    }
+
+    cout << k/2 + m;
 }
 
 int main() {
-    int N, M; // N - Vertex - წვერი ||||| M - Edge - წიბო
-    cin >> N >> M;
-
-    int adj[N + 1][N+1] = {0};
+    edge_count();
 
 
-    for (int i = 1; i <= M; i++) {
-        int v, u;
-        cin >> v >> u;
-        adj[u][v] = 1;
-        adj[v][u] = 1;
-    }
-
-    for (int i = 1; i <= N; i++) {
-        for (int j = 1; j <= N; j++) {
-            cout << adj[i][j] << " ";
-        }
-        cout << endl;
-    }
+    return 0;
 }

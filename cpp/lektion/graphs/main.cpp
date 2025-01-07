@@ -8,7 +8,7 @@ using namespace std;
 
 // Table shows which vertex is connected to which vertex
 // Table is N X N (Vertex X Vertex)
-void adjency_matrix() {
+void adjancency_matrix() { // მოსაზღვრეობის მატრიცით
     int N, M; // N - Vertex - წვერი ||||| M - Edge - წიბო
     cin >> N >> M;
 
@@ -39,6 +39,7 @@ void addEdge(vector<int> adj[], int u, int v) {
     adj[v].push_back(u);
 }
 
+// adjancency-list representation მოსაზღვრე წვეროების სია
 int main() {
     int n, m;
     int u, v;
