@@ -6,9 +6,44 @@
 
 using namespace std;
 
-// https://www.aiasoft.ge/problem/904
-void power_of_vertice() {
-    int N, M, V; // Vertice, Edge, vertice number
+//
+void binary_search() {
+
+}
+
+// https://www.aiasoft.ge/problem/306
+void mariams_birthday() {
+    int N; // mariams firends
+    int M; // conflicted friends count
+    cin >> k >> n;
+    if (n % 2) {
+        cout << 0;
+    }else {
+        cout << 1;
+    }
+}
+
+
+// https://www.aiasoft.ge/problem/857
+void binary_tree() {
+    int N; // count of leaves // leaf is a vertex that has only one edge
+    cin >> k >> n;
+    if (n % 2) {
+        cout << 0;
+    }else {
+        cout << 1;
+    }
+}
+
+// https://www.aiasoft.ge/problem/649
+void check_the_graph() {
+    int k, n;
+    cin >> k >> n;
+    if (n % 2) {
+        cout << 0;
+    }else {
+        cout << 1;
+    }
 }
 
 // https://www.aiasoft.ge/problem/903
