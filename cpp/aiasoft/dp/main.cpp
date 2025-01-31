@@ -258,8 +258,8 @@ int broken_ladder_1() {
 }
 
 int main() {
-
-        cout << "nigga" << endl;
+    pascal_trinalge();
+       cout << "nigga" << endl;
 
     return 0;
 }
